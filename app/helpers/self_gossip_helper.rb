@@ -1,0 +1,2 @@
+module SelfGossipHelper
+end

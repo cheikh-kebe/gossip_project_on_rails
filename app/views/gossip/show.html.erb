@@ -1,0 +1,3 @@
+<h1>The Gossip Page</h1>
+<h2>Voici la page de :<a href="../user/<%= Gossip.find(@gossip).user_id %>"> <%=Gossip.find(@gossip).user.first_name%> </a></h2>
+<p>Voici le contenu du gossip: <%= Gossip.find(@gossip).content %></p>

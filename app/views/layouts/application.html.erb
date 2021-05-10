@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TheGossipPojects</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+   <ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="/">Home</a>
+  </li>
+  <li class="nav-team">
+    <a class="nav-link" href="/welcome">Bienvenue</a>
+  </li>
+  <li class="nav-team">
+    <a class="nav-link" href="../team">Team</a>
+  </li>
+  <li class="nav-contact">
+    <a class="nav-link" href="../contact">Contact</a>
+  </li>
+  
+  <!--li class="nav-item"-->
+    <!--a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a-->
+  </li>
+</ul>
+    <%= yield %>
+  </body>
+  
+</html>

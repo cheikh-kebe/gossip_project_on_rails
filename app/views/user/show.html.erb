@@ -1,0 +1,10 @@
+<h1>Bienvenue, voici la page de <%= Gossip.find(@user).user.first_name %> <%= Gossip.find(@user).user.last_name %>.</h1>
+
+<div class="view">
+  <div class="card-header text-white">Email: <%= Gossip.find(@user).user.email %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Age: <%= Gossip.find(@user).user.age %></h5>
+    <p class="card-text">Description: <%= Gossip.find(@user).user.description %></p>
+  </div>
+</div>
