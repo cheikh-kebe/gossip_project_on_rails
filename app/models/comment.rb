@@ -3,4 +3,6 @@ class Comment < ApplicationRecord
   has_many :likes
   belongs_to :gossip
   belongs_to :tag, optional: true
+
+  
 end

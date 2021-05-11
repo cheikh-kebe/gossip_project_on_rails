@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  def show
+  def index
     @gossips = Gossip.all
     @user = params[:id]
   end
