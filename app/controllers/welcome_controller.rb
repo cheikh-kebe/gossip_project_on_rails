@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def show
-    @gossips = params[:id]
+    @gossips = Gossip.all
     @user = params[:id]
   end
 

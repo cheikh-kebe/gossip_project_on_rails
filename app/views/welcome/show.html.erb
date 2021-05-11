@@ -2,3 +2,21 @@
   <h1>Bienvenue "<%= @user %>" !</h1>
 </div>
 
+<div class="row align-middle shadow p-3 mb-5 bg-body rounded">
+
+  <%= @gossips.each_with_index do |gossip|%>
+
+  <div class="card text-white bg-danger mb-3 text-center" style="max-width: 18rem;">
+    <div class="card-header">Potin n°:<%= gossip.id%>
+      <a href="gossip/<%= gossip.id %>" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Afficher potin</a>
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">Auteur: <%= gossip.user.first_name%></h5>
+      <p class="card-text">Titre: <%= gossip.title %></p>
+    </div>
+
+  </div>
+  
+  <%end%>
+</div>
