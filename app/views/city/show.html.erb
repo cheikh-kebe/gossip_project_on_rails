@@ -1,0 +1,17 @@
+<h1>City page </h1>
+<p class="card-text">Ville: <%= @city.name %></p>
+<div class = "row align-middle shadow p-3 mb-5 justify-content-center">
+  <%= @gossips.each_with_index do |gossip|%>
+
+  <div class="view">
+    <div class="card-header text-white">Titre:<%= gossip.title %></div>
+    <div class="card-body">
+      <h5 class="card-title">Auteur: <%=gossip.user.first_name%></h5>
+      <p class="card-text">Contenue: <%= gossip.content%></p>
+      <p class="card-text">Date: <%= gossip.created_at%></p>
+      
+    </div>
+  </div>
+
+  <%end%>
+</div>

@@ -1,0 +1,33 @@
+<div class="list-group mx-auto">
+
+  <% @gossip.comments.reverse.each do |comment| %>
+
+    <div class="list-group-item mb-2">
+      <div class="row">
+        <div class="col-9">
+          <p class="mb-1"><%= comment.content %></p>
+        </div>
+        <div class="col-3 text-right">
+          <small><%= link_to "Edit", edit_gossip_comment_path(@gossip.id, comment.id) %></small>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="list-group mx-auto">
+
+  <% @gossip.comments.reverse.each do |comment| %>
+
+    <div class="list-group-item mb-2">
+      <div class="row">
+        <div class="col-9">
+          <p class="mb-1"><%= comment.content %></p>
+        </div>
+        <div class="col-3 text-right">
+          <small><%= link_to "Edit", edit_gossip_comment_path(@gossip.id, comment.id) %></small>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>

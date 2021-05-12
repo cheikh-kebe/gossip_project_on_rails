@@ -6,13 +6,15 @@ require 'faker'
     last_name: Faker::Name.last_name, 
     description: Faker::Quotes::Shakespeare.hamlet_quote, 
     email: Faker::Internet.email, 
-    age: Faker::Number.within(range: 18..70))
+    age: Faker::Number.within(range: 18..70),
+    city_id: Faker::Number.within(range: 1..10))
 end
 
 10.times do 
   city = City.create!(name: 
     Faker::Address.city, 
     user_id: Faker::Number.within(range: 1..10))
+    
 end
 
 20.times do 

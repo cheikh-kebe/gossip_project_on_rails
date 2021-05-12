@@ -1,0 +1,16 @@
+<h1>Écrire un commentaire</h1>
+
+<div class="container">
+
+    
+  <%= form_tag(gossip_comments_path(@id), method: "post") do %>
+    <%= text_field_tag 'gossip_id', @id, type: 'hidden', class: 'form-control' %>
+    <div class="form-group">
+      <%= label_tag 'Nouveau commentaire' %>
+      <%= text_area_tag 'content', '', required: true, class: 'form-control' %>
+    </div>
+    <%= submit_tag "Envoyer", class: 'btn btn-outline-primary btn-sm' %>
+  <% end %>
+                
+
+</div>

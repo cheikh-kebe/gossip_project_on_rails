@@ -6,5 +6,8 @@
   <div class="card-body">
     <h5 class="card-title">Age: <%= Gossip.find(@user).user.age %></h5>
     <p class="card-text">Description: <%= Gossip.find(@user).user.description %></p>
+
+    <p class="card-text"> Ville:<a href="../city/<%= Gossip.find(@user).user.city.id %>"> <%= Gossip.find(@user).user.city.name %></p>
+
   </div>
 </div>

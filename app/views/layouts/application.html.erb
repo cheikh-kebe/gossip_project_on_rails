@@ -9,32 +9,31 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-   <ul class="nav justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="/">Home</a>
-  </li>
-  <li class="nav-team">
-    <a class="nav-link" href="/welcome">Bienvenue</a>
-  </li>
-  <li class="nav-team">
-    <a class="nav-link" href="../team">Team</a>
-  </li>
-  <li class="nav-contact">
-    <a class="nav-link" href="../contact">Contact</a>
-  </li>
-
-  <li class="nav-create">
-    <a class="nav-link text-warning" href=./gossip/new" class="btn btn-outline-danger my-2 my-sm-0" role="button">Publier un potin !"</a>
-  </li>
+  </form>
+</nav>
+    <nav>
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="btn btn-primary" <%= link_to "Home", index_index_path %></li>
+        <li class="nav-item">
+          <a class="btn btn-primary" <%= link_to "Bienvenue", welcome_index_path %></li>
+        <li class="nav-item">
+          <a class="btn btn-primary" <%= link_to "Team", team_path %></li>
+        <li class="nav-item">
+          <a class="btn btn-primary" <%= link_to "Contact", contact_path %></li>
+        <li class="nav-create">
+          <a class="btn btn-success"<%= link_to "Publier un potin !", new_gossip_path %></li>
   
-  <!--li class="nav-item"-->
-    <!--a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a-->
-  </li>
-</ul>
-    <div class="container">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
+        <!--li class="nav-item"-->
+        <!--a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a-->
+        <!--</li>-->
+      </ul>
+    </nav>
+      <div class="container">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+      </div>
     <%= yield %>
   </body>
   

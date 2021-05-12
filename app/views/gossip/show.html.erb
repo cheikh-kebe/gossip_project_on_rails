@@ -1,3 +1,22 @@
 <h1>The Gossip Page</h1>
-<h2>Voici la page de :<a href="../user/<%= Gossip.find(@gossip).id %>"> <%=Gossip.find(@gossip).user.first_name%> </a></h2>
-<p>Voici le contenu du gossip: <%= Gossip.find(@gossip).content %></p>
+
+<h2>Voici la page de :<a href="../user/<%= @gossip.id %>"> <%= @gossip.user.first_name%> </a></h2>
+
+<p>Voici le contenu du gossip: <%= @gossip.content %></p>
+<p> Notre ami(e) <%= @gossip.user.first_name%> vient de : <%= @gossip.user.city.name %></p>
+
+<a href="/gossip/<%= @gossip.id %>" class="btn btn-danger btn-lg" data-confirm="êtes-vous sur?" data-method="DELETE">Supprimer le Gossip</a> 
+
+<div class="container">
+    
+ <%= form_tag(gossip_comment_path(@id), method: "post") do %>
+    <%= text_field_tag 'gossip_id', @id, type: 'hidden', class: 'form-control' %>
+     <div class="form-group">
+         <%= label_tag 'Nouveau commentaire' %>
+         </div>
+         <%= text_area_tag 'content', '', required: true, class: 'form-control' %>
+    <%= submit_tag "Envoyer", class: 'btn btn-outline-success btn-lg' %>
+ <% end %>                
+
+</div>
+

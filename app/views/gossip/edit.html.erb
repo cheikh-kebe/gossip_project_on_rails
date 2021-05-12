@@ -1,0 +1,19 @@
+<h1>Editer le Gossip</h1>
+
+<%= form_for @gossip do |gossip|%>
+
+  <div class = "form_group">
+    <label>Titre du Gossip</label>
+    <%= gossip.text_field :title, class: 'form_control' %>
+  </div>
+
+  <div class = "form_group">
+    <label>Contenue du Gossip</label>
+    <%= gossip.text_area :content, class: 'form_control' %>
+  </div>
+
+  <div class = "form_group">
+    <button type="submit" class="btn btn-success">Modifier le Gossip</button>
+  </div>
+
+<%end%>

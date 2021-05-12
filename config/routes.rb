@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :gossip
+  resources :city
+  resources :gossip do 
+    resources :comment
+  end
   resources :welcome
   resources :user
   resources :index
