@@ -7,7 +7,8 @@ require 'faker'
     description: Faker::Quotes::Shakespeare.hamlet_quote, 
     email: Faker::Internet.email, 
     age: Faker::Number.within(range: 18..70),
-    city_id: Faker::Number.within(range: 1..10))
+    city_id: Faker::Number.within(range: 1..10),
+    password: "123456")
 end
 
 10.times do 

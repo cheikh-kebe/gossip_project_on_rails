@@ -9,31 +9,43 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-  </form>
-</nav>
+   <nav>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+      <%if current_user != nil%>
+      <div class=nav justify-content-center>
+        <h5>Bienvenue <%= current_user.first_name %></h5>
+      </div>
+      <li class="nav-item">
+        <a class="btn btn-primary" <%= link_to "Accueil", welcome_index_path %></li>
+      <li class="nav-create">
+        <a class="btn btn-danger"  <%= link_to "Déconnexion", session_path(session.id), method: :delete %></li>
+      <li class="nav-create">
+      <%if current_user = nil%>
+        <a class="btn btn-success"<%= link_to "Créer Utilisateur!", new_user_path %></li> 
+      <%end%>
+    </ul>
+  </nav>
+      <%else%>
+  <div class="navbar-nav" >
     <nav>
       <ul class="nav justify-content-center">
         <li class="nav-item">
           <a class="btn btn-primary" <%= link_to "Home", index_index_path %></li>
         <li class="nav-item">
-          <a class="btn btn-primary" <%= link_to "Bienvenue", welcome_index_path %></li>
+          <a class="btn btn-primary"  <%= link_to "Connexion", new_session_path %></li>
         <li class="nav-item">
-          <a class="btn btn-primary" <%= link_to "Team", team_path %></li>
-        <li class="nav-item">
-          <a class="btn btn-primary" <%= link_to "Contact", contact_path %></li>
-        <li class="nav-create">
-          <a class="btn btn-success"<%= link_to "Publier un potin !", new_gossip_path %></li>
-  
-        <!--li class="nav-item"-->
-        <!--a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a-->
-        <!--</li>-->
+          <a class="btn btn-primary"  <%= link_to "Inscription", new_user_path %></li>
       </ul>
     </nav>
-      <div class="container">
-        <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>"><%= value %></div>
-        <% end %>
-      </div>
+  </div>
+  <%end%>
+
+  <div class="container">
+    <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+  </div>
     <%= yield %>
   </body>
   

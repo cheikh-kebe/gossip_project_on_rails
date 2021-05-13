@@ -5,8 +5,9 @@ class CityController < ApplicationController
   def show
     @city = City.find(params[:id])
     @gossips = Gossip.where(user_id:User.where(city_id:@city.id))
+    @gossip.user = User.find_by(id: session[:user_id])
   end
-
+  
   def new
   end
 

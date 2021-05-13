@@ -7,15 +7,24 @@
 
 <a href="/gossip/<%= @gossip.id %>" class="btn btn-danger btn-lg" data-confirm="êtes-vous sur?" data-method="DELETE">Supprimer le Gossip</a> 
 
+<p><%= @gossip.likes.count %> <%= (@gossip.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+<% pre_like = @gossip.likes.find { |like| like.user_id == current_user.id} %>
+
+<% if pre_like %>
+  <%= button_to 'Unlike', gossip_likes_path(@gossip, pre_like), method: :delete %>
+<% else %>
+  <%= button_to 'Like', gossip_likes_path(@gossip), method: :post %>
+<% end %>
+
 <div class="container">
     
  <%= form_tag(gossip_comment_path(@id), method: "post") do %>
     <%= text_field_tag 'gossip_id', @id, type: 'hidden', class: 'form-control' %>
      <div class="form-group">
-         <%= label_tag 'Nouveau commentaire' %>
+         <p><%= label_tag 'Nouveau commentaire' %></p>
          </div>
          <%= text_area_tag 'content', '', required: true, class: 'form-control' %>
-    <%= submit_tag "Envoyer", class: 'btn btn-outline-success btn-lg' %>
+    <%= submit_tag "Envoyer", class: 'btn btn-success btn-lg' %>
  <% end %>                
 
 </div>
