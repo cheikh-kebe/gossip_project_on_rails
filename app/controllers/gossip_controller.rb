@@ -1,6 +1,7 @@
 class GossipController < ApplicationController
 
   before_action :authenticate_user, only: [:new]
+  before_action :authenticate_user, only: [:show]
 
   def index
     @id = params[:id]

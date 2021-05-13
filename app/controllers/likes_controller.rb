@@ -7,15 +7,14 @@ class LikesController < ApplicationController
 
   def create
     @gossip.likes.create(user_id: current_user)
-    redirect_to gossip_path(@gossip)
     
     if already_liked?
-      flash[:danger] = "Tu ne peux pas liker plus d'une fois"
+      flash[:danger] = "Tu ne peux pas liker plus d'une fois😧"
       redirect_to welcome_index_path(@gossip)
     else 
       @gossip.likes.create(user_id: current_user.id)
-      flash[:success] = "Ton like a été pris en compte ! "
-      redirect_to welcome_index_path(@gossip)
+      flash[:success] = "Ton like a été pris en compte 😁! "
+      redirect_to gossip_path(@gossip)
     end
   end  
 
@@ -24,7 +23,7 @@ class LikesController < ApplicationController
   end
 
   def find_like
-    @like = @post.likes.find(params[:id])
+    @like = @gossip.likes.find(params[:id])
   end
 
   def destroy
@@ -33,7 +32,7 @@ class LikesController < ApplicationController
     else
       @like.destroy
     end
-    redirect_to gossip_path(@post)
+    redirect_to welcome_index_path
   end
   
   private  

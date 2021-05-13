@@ -1,5 +1,4 @@
 <h1>The Gossip Page</h1>
-
 <h2>Voici la page de :<a href="../user/<%= @gossip.id %>"> <%= @gossip.user.first_name%> </a></h2>
 
 <p>Voici le contenu du gossip: <%= @gossip.content %></p>
@@ -11,7 +10,7 @@
 <% pre_like = @gossip.likes.find { |like| like.user_id == current_user.id} %>
 
 <% if pre_like %>
-  <%= button_to 'Unlike', gossip_likes_path(@gossip, pre_like), method: :delete %>
+  <%= button_to 'Unlike', gossip_like_path(@gossip, pre_like), method: :delete %>
 <% else %>
   <%= button_to 'Like', gossip_likes_path(@gossip), method: :post %>
 <% end %>
@@ -28,4 +27,3 @@
  <% end %>                
 
 </div>
-
