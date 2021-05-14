@@ -50,7 +50,6 @@ end
     recipient_id: Faker::Number.within(range: 1..10))
 end
 
-100.times do    
-  likes = Like.create!(comment_id: Faker::Number.within(range:1..20), gossip_id: Faker::Number.within(range:1..20), user_id: Faker::Number.within(range:1..10)) 
-
-end
+# 100.times do    
+#   likes = Like.create!(#, gossip_id: Faker::Number.within(range:1..20), user_id: Faker::Number.within(range:1..10)) 
+# end

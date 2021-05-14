@@ -1,7 +1,6 @@
 class GossipController < ApplicationController
 
-  before_action :authenticate_user, only: [:new]
-  before_action :authenticate_user, only: [:show]
+  before_action :authenticate_user, only: [:show,:new]
 
   def index
     @id = params[:id]
@@ -10,8 +9,8 @@ class GossipController < ApplicationController
 
   def show
     @id = params[:id]
-    @gossip = Gossip.find(params[:id])
-    @comments = Gossip.find(params[:id]).content
+    @gossip = find_gossip
+    @comments = find_gossip.content
     @comment = Comment.new(content: params['content'], gossip_id: 1, gossip_id: @gossip ,user_id: 1)
   end
 
@@ -34,18 +33,18 @@ class GossipController < ApplicationController
   end
 
   def edit
-    @gossip = Gossip.find(params[:id])
+    @gossip = find_gossip
   end
 
   def update
-    @gossip = Gossip.find(params[:id])
+    @gossip = find_gossip
     gossip_params = params.require(:gossip).permit(:title, :content)
     @gossip.update(gossip_params)
     redirect_to gossip_path
   end
 
   def destroy
-    @gossip = Gossip.find(params[:id])
+    @gossip = find_gossip
     @gossip.destroy
     redirect_to welcome_index_path
   end
@@ -54,7 +53,7 @@ class GossipController < ApplicationController
 
   def authenticate_user
     unless current_user
-      flash[:danger] = "Please log in."
+      flash[:danger] = "Veuillez vous connecter SVP!."
       redirect_to new_session_path
     end
   end
