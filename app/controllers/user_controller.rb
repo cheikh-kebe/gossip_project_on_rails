@@ -5,14 +5,14 @@ class UserController < ApplicationController
   end
 
   def new
-    @user = new_user
+    @user = User.new
   end
 
   def create
-    @user = new_user()
+    @user = User.new()
 
     user_params = params.permit(:first_name, :last_name, :email, :age, :city_id, :password, :description)
-    @user = new_user(user_params)
+    @user = User.new(user_params)
     
     if @user.save 
       flash[:success] = "Utilisateur créé!"

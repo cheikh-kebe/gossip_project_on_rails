@@ -1,11 +1,11 @@
 <nav>
   <ul class="nav justify-content-center">
     <li class="nav-item">
-      <a class="btn btn-primary" <% link_to "Team", team_path %></li>
+      <a class="btn btn-primary" <%= link_to "Team", team_path %></li>
     <li class="nav-item">
-      <a class="btn btn-primary" <% link_to "Contact", contact_path %></li>
+      <a class="btn btn-primary" <%= link_to "Contact", contact_path %></li>
     <li class="nav-create">
-      <a class="btn btn-primary"<% link_to "Publier un potin !", new_gossip_path %></li>
+      <a class="btn btn-primary"<%= link_to "Publier un potin !", new_gossip_path %></li>
 
     <!--li class="nav-item"-->
       <!--a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a-->
@@ -14,22 +14,22 @@
 </nav>
 
 <div class="view">
-  <h1>Bienvenue "<%%>" !</h1>
+  <h1>Bienvenue "<%=%>" !</h1>
 </div>
 
 <div class="row align-middle shadow p-3 mb-5 bg-body rounded justify-content-center">
 
-  <% @gossips.reach_with_index.reverse do |gossip|%>
+  <%@gossips.each_with_index do |gossip|%>
   
   <div class="card text-white bg-danger mb-3 text-center" style="min-width: 5rem;">
-    <div class="card-header">Potin n°:<% gossip.id%>
+    <div class="card-header">Potin n°:<%= gossip.id%>
       <a href="gossip/<%= gossip.id %>" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Afficher potin</a>
       <a href="gossip/<%= gossip.id %>/edit" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Modifier</a>
     </div>
 
     <div class="card-body">
-      <h5 class="card-title">Auteur: <% gossip.user.first_name%></h5>
-      <p class="card-text">Titre: <% gossip.title %></p>
+      <h5 class="card-title">Auteur: <%= gossip.user.first_name%></h5>
+      <p class="card-text">Titre: <%= gossip.title %></p>
     </div>
 
   </div>
