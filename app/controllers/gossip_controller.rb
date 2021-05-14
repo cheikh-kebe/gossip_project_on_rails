@@ -9,8 +9,8 @@ class GossipController < ApplicationController
 
   def show
     @id = params[:id]
-    @gossip = find_gossip
-    @comments = find_gossip.content
+    @gossip = Gossip.find(params[:id])
+    @comments = Gossip.find(params[:id]).content
     @comment = Comment.new(content: params['content'], gossip_id: 1, gossip_id: @gossip ,user_id: 1)
   end
 
@@ -33,18 +33,18 @@ class GossipController < ApplicationController
   end
 
   def edit
-    @gossip = find_gossip
+    @gossip = Gossip.find(params[:id])
   end
 
   def update
-    @gossip = find_gossip
+    @gossip = Gossip.find(params[:id])
     gossip_params = params.require(:gossip).permit(:title, :content)
     @gossip.update(gossip_params)
     redirect_to gossip_path
   end
 
   def destroy
-    @gossip = find_gossip
+    @gossip = Gossip.find(params[:id])
     @gossip.destroy
     redirect_to welcome_index_path
   end
