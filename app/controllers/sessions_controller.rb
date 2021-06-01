@@ -11,11 +11,12 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params['email'])
 
     if user && user.authenticate(params['password_digest'])
-      session[:user_id] = user.id
+      log_in(user)
+      remember(user)
       flash[:success] = "Bienvenue #{user.first_name}!"
       redirect_to sessions_path 
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = 'Combinaison Email/Mot de passe Invalide, Réessayer'
       render 'new'
     end
   end

@@ -1,6 +1,7 @@
 require 'bcrypt'
 
 class User < ApplicationRecord
+  
   belongs_to :city, optional: true
   has_many :gossips, dependent: :destroy
   has_many :sent_messages, foreign_key: 'sender_id', class_name: "PrivateMessage"
@@ -14,4 +15,10 @@ class User < ApplicationRecord
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :age, :numericality => { :greater_than_or_equal_to => 0 }
   validates :password, presence: true, length: { minimum: 6 }
+
+  def remember(remember_token)
+    remember_digest = BCrypt::Password.create(remember_token)
+    self.update(remember_digest: remember_digest)
+  end
+
 end
